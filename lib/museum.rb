@@ -40,4 +40,12 @@ class Museum
 		end
 	end
 
+	def draw_lottery_winner(exhibit)
+		ticket_lottery_contestants(exhibit).sample.name
+	end
+
+	def announce_lottery_winner(exhibit)
+		puts "#{draw_lottery_winner} has won the #{exhibit} exhibit lottery"
+	end
+
 end
