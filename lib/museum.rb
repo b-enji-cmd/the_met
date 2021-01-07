@@ -34,17 +34,10 @@ class Museum
 		breakdown
 	end
 
-end
-
-# The short answer seems to be: a ||= b means,
-# if a is undefined then assign it the value of b, 
-#otherwise leave it alone.
-=begin
-
-@exhibits.flat_map do |exhibit|
-			@patrons.flat_map do |patron|
-				breakdown[exhibit] << patron if recommend_exhibits(patron)
-			end
+	def ticket_lottery_contestants(exhibit)
+		@patrons.find_all do |patron|
+			patron.interests.include?(exhibit.name) && patron.spending_money < exhibit.cost
 		end
+	end
 
-=end
+end
